@@ -1,0 +1,28 @@
+# Runs on every push and pull request. If a question is malformed, unsourced,
+# has an answer off its axis, or a day is incomplete, this fails — so you get a
+# red X (and an email from GitHub) instead of shipping a broken puzzle.
+name: Check questions
+ 
+on:
+  push:
+  pull_request:
+ 
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+ 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+ 
+      - run: npm ci
+ 
+      - name: Validate the question bank
+        run: npm run check
+ 
+      - name: Run unit tests
+        run: npm test
+ 
