@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Ballpark — how calibrated are you?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <!-- START -->
+      <section id="start" class="screen">
+        <div class="brandrow"><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
+        <h1 class="logo">Ballpark</h1>
+        <p class="tagline">Five numbers a day. Drag a range around each — tighter is riskier. How calibrated are you?</p>
+        <div class="how" id="how"></div>
+        <div class="beststrip" id="bestStrip" hidden>
+          <span class="lab">Best score</span><span class="val mono" id="bestVal">0</span>
+        </div>
+        <button class="btn" id="startBtn">Play today's five</button>
+      </section>
+
+      <!-- PLAY -->
+      <section id="play" class="screen" hidden>
+        <div class="topbar">
+          <div class="brandrow small"><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
+          <div class="chips">
+            <span class="chip mono"><span class="lab">Score</span> <span id="scoreChip">0</span></span>
+            <span class="chip streak mono" id="streakChip"><span class="lab">Streak</span> <span id="streakVal">0</span></span>
+          </div>
+        </div>
+        <div class="progress"><div class="fill" id="progFill"></div></div>
+
+        <div class="qcat mono" id="qcat"></div>
+        <h2 class="prompt" id="qprompt"></h2>
+
+        <div class="nline" id="nline"></div>
+
+        <div class="readrow">
+          <span class="range mono" id="rangeRead"></span>
+          <span class="tight" id="tightWord"></span>
+        </div>
+
+        <div class="stake" id="stake">
+          <div class="l">If the answer is inside your range<b>tighter = more, but riskier</b></div>
+          <div class="pts mono" id="stakePts">0</div>
+        </div>
+
+        <button class="btn" id="lockBtn">Lock it in</button>
+
+        <div class="reveal" id="reveal" hidden>
+          <div class="verdict" id="verdict">
+            <div>
+              <div class="vtext" id="vtext"></div>
+              <div class="vsub mono" id="vsub"></div>
+            </div>
+            <div class="vpts mono" id="vpts"></div>
+          </div>
+          <div class="answerline mono" id="answerLine"></div>
+          <p class="note" id="qnote"></p>
+          <button class="btn" id="nextBtn">Next</button>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="results" class="screen" hidden>
+        <div class="eyebrow mono" id="resEyebrow">Round complete</div>
+        <div class="finalrow">
+          <div class="final mono" id="finalScore">0</div>
+          <div class="rankbadge" id="rankBadge"></div>
+        </div>
+        <p class="resmsg" id="resMsg"></p>
+        <canvas id="cardCanvas" width="1080" height="1350" class="cardcanvas"></canvas>
+        <div class="sharebtns">
+          <button class="btn" id="copyBtn">Copy card</button>
+          <button class="btn ghost" id="dlBtn">Download</button>
+        </div>
+        <div class="toast mono" id="toast"></div>
+        <button class="btn ghost wide" id="againBtn">Play again (demo)</button>
+        <p class="footnote">A new five drops every day. No account, no grinding — come back tomorrow.</p>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
