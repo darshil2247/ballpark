@@ -59,6 +59,8 @@ body {
 #start { padding-top: 6vh; }
 .logo { font-family: var(--display); font-size: 48px; font-weight: 700; letter-spacing: -0.03em; margin-top: 18px; }
 .tagline { font-size: 17px; color: var(--soft); margin-top: 12px; max-width: 36ch; }
+.fermi { font-size: 13.5px; color: var(--soft); margin-top: 10px; max-width: 38ch; line-height: 1.5; }
+.fermi b { color: var(--accent); font-weight: 600; }
 .how { margin: 30px 0 26px; display: flex; flex-direction: column; gap: 13px; }
 .how .step { display: flex; gap: 12px; align-items: flex-start; }
 .how .num {

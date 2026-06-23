@@ -59,7 +59,6 @@ export function init(): void {
   $("startBtn").addEventListener("click", () => start(puzzle));
   $("nextBtn").addEventListener("click", next);
   $("lockBtn").addEventListener("click", lock);
-  $("againBtn").addEventListener("click", () => start(puzzle, true));
   $("copyBtn").addEventListener("click", onCopy);
   $("dlBtn").addEventListener("click", onDownload);
 }
