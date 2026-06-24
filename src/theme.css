@@ -1,19 +1,17 @@
 /* ===== design tokens — edit these to restyle the whole app ===== */
 :root {
-  --paper: #ffffff;
-  --bg: #f5f6f8;
-  --ink: #14213d;
-  --soft: rgba(20, 33, 61, 0.6);
-  --faint: rgba(20, 33, 61, 0.38);
-  --line: #e7e9ef;
-  --accent: #2f6bff;
-  --accent-weak: #e7eeff;
-  --good: #1e9e62;
-  --good-weak: #e4f4ec;
-  --miss: #e5544b;
-  --miss-weak: #fdeceb;
-  --r: 16px;
-  --r-sm: 12px;
+  --paper: #FFFFFF;
+  --bg: #FBF6EA;
+  --ink: #2C2820;
+  --soft: rgba(44,40,32,.62);
+  --faint: rgba(44,40,32,.40);
+  --line: #EBE2D2;
+  --accent: #DDA02A;
+  --accent-weak: #F8EECF;
+  --good: #4E9A6A;
+  --good-weak: #E6F1E7;
+  --miss: #DD6149;
+  --miss-weak: #FAE6E0;
   --sans: "Inter", system-ui, sans-serif;
   --display: "Space Grotesk", var(--sans);
   --mono: "JetBrains Mono", ui-monospace, monospace;
