@@ -19,6 +19,31 @@
         <h1 class="logo">Ballpark</h1>
         <p class="tagline">Five numbers a day. Drag a range around each — tighter is riskier. How calibrated are you?</p>
         <p class="fermi">A daily exercise in <b>Fermi estimation</b> — reasoning your way to a good-enough number when you can't look it up.</p>
+        <!-- how-it-works demo: plays the mechanic in ~6s, no interaction -->
+        <div class="demo" aria-hidden="true">
+          <div class="democat">Geography</div>
+          <div class="demoq">How tall is Mount Everest, in metres?</div>
+          <div class="demoline">
+            <div class="demoaxis"></div>
+            <div class="demotick" style="left:0%"></div>
+            <div class="demotick" style="left:25%"></div>
+            <div class="demotick" style="left:50%"></div>
+            <div class="demotick" style="left:75%"></div>
+            <div class="demotick" style="left:100%"></div>
+            <div class="demoticklab" style="left:0%">100</div>
+            <div class="demoticklab" style="left:25%">1k</div>
+            <div class="demoticklab" style="left:50%">10k</div>
+            <div class="demoticklab" style="left:75%">100k</div>
+            <div class="demoticklab" style="left:100%">1M</div>
+            <div class="demoband"><span class="demohandle l"></span><span class="demohandle r"></span></div>
+            <div class="demodot"></div>
+          </div>
+          <div class="democaps">
+            <span class="democap c1">Drag a low and a high onto the scale</span>
+            <span class="democap c2">Tighter range = more points, but riskier</span>
+            <span class="democap c3">Answer inside the range — you score!</span>
+          </div>
+        </div>
         <div class="how" id="how"></div>
         <div class="beststrip" id="bestStrip" hidden>
           <span class="lab">Best score</span><span class="val mono" id="bestVal">0</span>

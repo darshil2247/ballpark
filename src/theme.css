@@ -132,6 +132,47 @@ body {
 .note { font-size: 14px; color: var(--soft); background: var(--bg); border-radius: var(--r-sm); padding: 13px 14px; line-height: 1.5; }
 .reveal .btn { margin-top: 18px; }
 
+/* how-it-works demo (start screen) */
+.demo { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px; margin: 16px 0 6px; }
+.democat { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.demoq { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }
+.demoline { position: relative; height: 56px; }
+.demoaxis { position: absolute; left: 0; right: 0; top: 28px; height: 3px; border-radius: 2px; background: var(--line); }
+.demotick { position: absolute; top: 23px; width: 1px; height: 11px; background: #d6d9e2; transform: translateX(-0.5px); }
+.demoticklab { position: absolute; top: 41px; font-family: var(--mono); font-size: 9px; color: var(--faint); transform: translateX(-50%); white-space: nowrap; }
+.demoband { position: absolute; top: 20px; height: 18px; border-radius: 6px; border: 1.5px solid currentColor; color: var(--accent); background: var(--accent-weak); animation: demoBand 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+.demohandle { position: absolute; top: -6px; width: 18px; height: 28px; border-radius: 6px; background: var(--paper); border: 2px solid currentColor; }
+.demohandle.l { left: -10px; }
+.demohandle.r { right: -10px; }
+.demodot { position: absolute; left: 48%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--ink); border: 2.5px solid var(--paper); box-shadow: 0 0 0 1px var(--ink); animation: demoDot 6.5s ease infinite; }
+.democaps { position: relative; height: 18px; margin-top: 10px; }
+.democap { position: absolute; inset: 0; display: flex; align-items: center; font-size: 12px; color: var(--soft); }
+.democap.c3 { color: var(--good); font-weight: 500; }
+.democap.c1 { animation: demoCap1 6.5s linear infinite; }
+.democap.c2 { animation: demoCap2 6.5s linear infinite; }
+.democap.c3 { animation: demoCap3 6.5s linear infinite; }
+
+@keyframes demoBand {
+  0%   { opacity: 0; left: 24%; width: 52%; color: var(--accent); background: var(--accent-weak); }
+  8%   { opacity: 0; left: 24%; width: 52%; }
+  13%  { opacity: 1; left: 24%; width: 52%; color: var(--accent); background: var(--accent-weak); }
+  45%  { opacity: 1; left: 38%; width: 24%; color: var(--accent); background: var(--accent-weak); }
+  70%  { opacity: 1; left: 38%; width: 24%; color: var(--accent); background: var(--accent-weak); }
+  76%  { opacity: 1; left: 38%; width: 24%; color: var(--good); background: var(--good-weak); }
+  100% { opacity: 1; left: 38%; width: 24%; color: var(--good); background: var(--good-weak); }
+}
+@keyframes demoDot {
+  0%   { opacity: 0; top: -4px; background: var(--ink); }
+  60%  { opacity: 0; top: -4px; background: var(--ink); }
+  64%  { opacity: 1; top: -4px; background: var(--ink); }
+  73%  { opacity: 1; top: 26px; background: var(--ink); }
+  78%  { opacity: 1; top: 26px; background: var(--good); }
+  100% { opacity: 1; top: 26px; background: var(--good); }
+}
+@keyframes demoCap1 { 0%{opacity:0} 12%{opacity:0} 17%{opacity:1} 40%{opacity:1} 45%{opacity:0} 100%{opacity:0} }
+@keyframes demoCap2 { 0%{opacity:0} 45%{opacity:0} 50%{opacity:1} 66%{opacity:1} 71%{opacity:0} 100%{opacity:0} }
+@keyframes demoCap3 { 0%{opacity:0} 74%{opacity:0} 79%{opacity:1} 96%{opacity:1} 99%{opacity:0} 100%{opacity:0} }
+
 /* ---------- RESULTS ---------- */
 #results { text-align: center; padding-top: 2vh; }
 .eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
@@ -148,4 +189,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .screen, .reveal { animation: none; }
   .nline .answer-dot, .progress .fill { transition: none; }
+  .demoband { animation: none; opacity: 1; left: 38%; width: 24%; color: var(--good); background: var(--good-weak); }
+  .demodot { animation: none; opacity: 1; top: 26px; background: var(--good); }
+  .democap.c1, .democap.c2 { display: none; }
+  .democap.c3 { animation: none; opacity: 1; }
 }
