@@ -14,6 +14,12 @@ import { fmt } from "./format";
 import { loadSaved, hasPlayed, recordRound } from "./daily";
 import { drawCard, copyCard, downloadCard } from "./card";
 
+function niceRound(v: number): number {
+  if (v >= 100) return Math.round(v);
+  if (v >= 10) return Math.round(v * 10) / 10;
+  return Math.round(v * 100) / 100;
+}
+
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
 const HOW = [
@@ -113,7 +119,9 @@ function lock(): void {
   if (!S || S.locked) return;
   S.locked = true;
   const q = S.puzzle.questions[S.idx];
-  const { loVal, hiVal } = S.interval!.getInterval();
+  const raw = S.interval!.getInterval();
+  const loVal = niceRound(raw.loVal);
+  const hiVal = niceRound(raw.hiVal);
   const hit = isHit(loVal, hiVal, q.answer);
   const pts = points(loVal, hiVal, q.answer);
   const w = widthOOM(loVal, hiVal);
