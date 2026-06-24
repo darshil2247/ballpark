@@ -20,8 +20,11 @@ interface Opts {
 export function mountInterval(container: HTMLElement, opts: Opts): IntervalInput {
   const { minExp, maxExp } = opts;
   const span = maxExp - minExp;
-  let loPct = 36;
-  let hiPct = 64;
+  // Band starts at a random position each question (same 28%-wide default as
+  // before), so an untouched band no longer reliably sits on the answer.
+  const START_WIDTH = 28;
+  let loPct = 5 + Math.random() * (90 - START_WIDTH);
+  let hiPct = loPct + START_WIDTH;
   let frozen = false;
   let changeCb: (() => void) | null = null;
 
