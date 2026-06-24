@@ -15,9 +15,7 @@ import { loadSaved, hasPlayed, recordRound } from "./daily";
 import { drawCard, copyCard, downloadCard } from "./card";
 
 function niceRound(v: number): number {
-  if (v >= 100) return Math.round(v);
-  if (v >= 10) return Math.round(v * 10) / 10;
-  return Math.round(v * 100) / 100;
+  return Math.round(v);
 }
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
