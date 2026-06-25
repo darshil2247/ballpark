@@ -1,29 +1,29 @@
 [
   {
-    "id": "africa-countries",
+    "id": "births-per-day",
     "date": "2026-06-24",
     "slot": 1,
-    "category": "Geography",
-    "prompt": "How many sovereign countries are there in Africa?",
-    "answer": 54,
-    "unit": "countries",
-    "minExp": 1,
-    "maxExp": 6,
-    "source": "https://www.un.org/en/about-us/member-states",
-    "note": "54 UN-recognised states. The African Union counts 55, including Western Sahara — a common source of disagreement."
+    "category": "Demography",
+    "prompt": "Roughly how many babies are born worldwide each day?",
+    "answer": 360000,
+    "unit": "births",
+    "minExp": 3,
+    "maxExp": 8,
+    "source": "https://population.un.org/wpp/",
+    "note": "8 billion people, born at ~16 per 1,000 a year -> ~130 million/year / 365 ~ 360,000 a day. (UN: ~363,000.)"
   },
   {
-    "id": "adult-teeth",
+    "id": "breaths-per-day",
     "date": "2026-06-24",
     "slot": 2,
     "category": "Human Body",
-    "prompt": "How many teeth does a typical adult have?",
-    "answer": 32,
-    "unit": "teeth",
-    "minExp": 0,
-    "maxExp": 2,
-    "source": "https://www.britannica.com/science/tooth",
-    "note": "32 including the four wisdom teeth — many adults have those removed and live with 28."
+    "prompt": "Roughly how many breaths does a person take in a day?",
+    "answer": 20000,
+    "unit": "breaths",
+    "minExp": 2,
+    "maxExp": 6,
+    "source": "https://www.lung.org",
+    "note": "You breathe ~12-16 times a minute at rest. 14 x 60 x 24 ~ 20,000 — from the rate, not the figure."
   },
   {
     "id": "marathon-metres",
@@ -36,20 +36,20 @@
     "minExp": 3,
     "maxExp": 9,
     "source": "https://worldathletics.org/disciplines/road-running/marathon",
-    "note": "42,195 m — fixed in 1921 from the 1908 London course length, not a round number by design."
+    "note": "~26 miles x ~1,600 m ~ 42,000 m. Fixed at 42,195 m in 1921 from the 1908 London course."
   },
   {
-    "id": "water-boil-f",
+    "id": "olympic-pool-litres",
     "date": "2026-06-24",
     "slot": 4,
     "category": "Science",
-    "prompt": "At what temperature does water boil, in degrees Fahrenheit?",
-    "answer": 212,
-    "unit": "°F",
-    "minExp": 1,
-    "maxExp": 6,
-    "source": "https://www.britannica.com/science/boiling-point",
-    "note": "212 °F at sea level — the Fahrenheit scale's other anchor point, 180 degrees above freezing."
+    "prompt": "How many litres of water fill an Olympic-size swimming pool?",
+    "answer": 2500000,
+    "unit": "litres",
+    "minExp": 4,
+    "maxExp": 9,
+    "source": "https://www.worldaquatics.com",
+    "note": "50 m x 25 m x 2 m = 2,500 m^3, and 1 m^3 = 1,000 L -> 2,500,000 L. Pure geometry."
   },
   {
     "id": "earth-moon-km",
@@ -78,17 +78,17 @@
     "note": "About 149.6 million km — this distance is defined as one Astronomical Unit (AU)."
   },
   {
-    "id": "human-chromosomes",
+    "id": "blood-pumped-day",
     "date": "2026-06-25",
     "slot": 2,
     "category": "Human Body",
-    "prompt": "How many chromosomes does a human cell normally have?",
-    "answer": 46,
-    "unit": "chromosomes",
-    "minExp": 0,
+    "prompt": "Roughly how many litres of blood does the heart pump in a day?",
+    "answer": 7000,
+    "unit": "litres",
+    "minExp": 1,
     "maxExp": 6,
-    "source": "https://www.genome.gov/genetics-glossary/Chromosome",
-    "note": "46 — arranged in 23 pairs, one set from each parent."
+    "source": "https://www.bhf.org.uk",
+    "note": "~70 mL per beat x ~100,000 beats a day ~ 7,000 litres pumped daily."
   },
   {
     "id": "burj-khalifa-m",
@@ -104,17 +104,17 @@
     "note": "828 m to the tip — held the 'world's tallest' title since 2010."
   },
   {
-    "id": "gold-atomic-number",
+    "id": "paper-stack-million",
     "date": "2026-06-25",
     "slot": 4,
-    "category": "Science",
-    "prompt": "What is the atomic number of gold?",
-    "answer": 79,
-    "unit": "protons",
+    "category": "Everyday",
+    "prompt": "How tall would a stack of one million sheets of paper be, in metres?",
+    "answer": 100,
+    "unit": "metres",
     "minExp": 0,
-    "maxExp": 6,
-    "source": "https://pubchem.ncbi.nlm.nih.gov/element/Gold",
-    "note": "79 — meaning a gold atom has 79 protons. Its symbol Au comes from the Latin 'aurum'."
+    "maxExp": 4,
+    "source": "https://en.wikipedia.org/wiki/Paper_density",
+    "note": "A sheet is ~0.1 mm thick. 1,000,000 x 0.1 mm = 100,000 mm = 100 m."
   },
   {
     "id": "nile-length-km",
@@ -130,17 +130,17 @@
     "note": "About 6,650 km — long considered the world's longest river, though the Amazon is a close rival."
   },
   {
-    "id": "solar-planets",
+    "id": "count-to-million-days",
     "date": "2026-06-26",
     "slot": 1,
-    "category": "Space",
-    "prompt": "How many planets are in our solar system?",
-    "answer": 8,
-    "unit": "planets",
+    "category": "Numbers",
+    "prompt": "Counting one number per second nonstop, how many days to reach a million?",
+    "answer": 12,
+    "unit": "days",
     "minExp": 0,
-    "maxExp": 3,
-    "source": "https://science.nasa.gov/solar-system/planets/",
-    "note": "8 since 2006, when Pluto was reclassified as a dwarf planet."
+    "maxExp": 4,
+    "source": "https://en.wikipedia.org/wiki/1,000,000",
+    "note": "1,000,000 / 86,400 seconds a day ~ 11.6 days of nonstop counting."
   },
   {
     "id": "heartbeats-day",
@@ -153,7 +153,7 @@
     "minExp": 2,
     "maxExp": 6,
     "source": "https://www.heart.org/en/health-topics/heart-attack/about-heart-attacks",
-    "note": "Around 100,000 — about 60–100 beats a minute, all day, every day."
+    "note": "~70 beats a minute x 60 x 24 ~ 100,000 a day. Derive it from the rate."
   },
   {
     "id": "speed-of-sound",
@@ -166,20 +166,20 @@
     "minExp": 1,
     "maxExp": 6,
     "source": "https://www.britannica.com/science/speed-of-sound",
-    "note": "About 343 m/s at 20 °C — which is why you see lightning before you hear thunder."
+    "note": "About 343 m/s at 20 C — which is why you see lightning before you hear thunder."
   },
   {
-    "id": "chessboard-squares",
+    "id": "marathon-strides",
     "date": "2026-06-26",
     "slot": 4,
-    "category": "Games",
-    "prompt": "How many squares are on a standard chessboard?",
-    "answer": 64,
-    "unit": "squares",
-    "minExp": 0,
-    "maxExp": 6,
-    "source": "https://en.wikipedia.org/wiki/Chessboard",
-    "note": "64 — an 8x8 grid of alternating light and dark squares."
+    "category": "Sport",
+    "prompt": "Roughly how many strides does a runner take to finish a marathon?",
+    "answer": 30000,
+    "unit": "strides",
+    "minExp": 2,
+    "maxExp": 7,
+    "source": "https://worldathletics.org",
+    "note": "A running stride is ~1.4 m. 42,195 m / 1.4 ~ 30,000 strides."
   },
   {
     "id": "russia-area",
@@ -208,17 +208,17 @@
     "note": "About 12,742 km on average — slightly wider at the equator than pole-to-pole."
   },
   {
-    "id": "us-states",
+    "id": "walk-lifetime-km",
     "date": "2026-06-27",
     "slot": 2,
-    "category": "Geography",
-    "prompt": "How many states are in the United States?",
-    "answer": 50,
-    "unit": "states",
-    "minExp": 0,
-    "maxExp": 6,
-    "source": "https://www.usa.gov/states-and-territories",
-    "note": "50 — the most recent additions were Alaska and Hawaii, both in 1959."
+    "category": "Human Body",
+    "prompt": "Roughly how far does a typical person walk in a lifetime, in kilometres?",
+    "answer": 90000,
+    "unit": "km",
+    "minExp": 3,
+    "maxExp": 8,
+    "source": "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+    "note": "~4,000 steps/day x ~0.75 m x 365 x ~80 years ~ 90,000 km — more than twice around the Earth."
   },
   {
     "id": "hours-in-year",
@@ -273,17 +273,17 @@
     "note": "60 x 24 x 7 = 10,080 minutes."
   },
   {
-    "id": "water-freeze-k",
+    "id": "leaves-on-tree",
     "date": "2026-06-28",
     "slot": 2,
-    "category": "Science",
-    "prompt": "At what temperature does water freeze, in kelvin?",
-    "answer": 273,
-    "unit": "K",
-    "minExp": 2,
-    "maxExp": 5,
-    "source": "https://www.britannica.com/science/Kelvin-temperature-scale",
-    "note": "273.15 K = 0 °C. Kelvin starts at absolute zero, so there are no negative temperatures."
+    "category": "Nature",
+    "prompt": "Roughly how many leaves are on a large mature tree?",
+    "answer": 200000,
+    "unit": "leaves",
+    "minExp": 3,
+    "maxExp": 8,
+    "source": "https://www.britannica.com/plant/tree",
+    "note": "~200 leafy twigs x ~1,000 leaves each ~ 200,000 on a mature tree."
   },
   {
     "id": "amazon-length",
@@ -312,17 +312,17 @@
     "note": "About 2,300 km — the largest living structure on Earth, visible from space."
   },
   {
-    "id": "skull-bones",
+    "id": "water-drunk-year",
     "date": "2026-06-28",
     "slot": 5,
-    "category": "Human Body",
-    "prompt": "How many bones are in the adult human skull?",
-    "answer": 22,
-    "unit": "bones",
-    "minExp": 0,
-    "maxExp": 6,
-    "source": "https://www.britannica.com/science/skull",
-    "note": "22 — eight cranial bones protecting the brain plus fourteen facial bones."
+    "category": "Health",
+    "prompt": "Roughly how many litres of water does a person drink in a year?",
+    "answer": 730,
+    "unit": "litres",
+    "minExp": 1,
+    "maxExp": 5,
+    "source": "https://www.cdc.gov/healthywater",
+    "note": "~2 litres a day x 365 ~ 730 litres a year."
   },
   {
     "id": "earth-orbital-speed",
@@ -338,30 +338,30 @@
     "note": "About 30 km/s — you're hurtling through space far faster than any rocket while sitting still."
   },
   {
-    "id": "eu-countries",
+    "id": "words-per-day",
     "date": "2026-06-29",
     "slot": 2,
-    "category": "Geography",
-    "prompt": "How many member countries are in the European Union?",
-    "answer": 27,
-    "unit": "countries",
-    "minExp": 0,
-    "maxExp": 2,
-    "source": "https://european-union.europa.eu/principles-countries-history/eu-countries_en",
-    "note": "27 since 2020, when the UK left."
+    "category": "Society",
+    "prompt": "Roughly how many words does the average person speak in a day?",
+    "answer": 16000,
+    "unit": "words",
+    "minExp": 2,
+    "maxExp": 6,
+    "source": "https://news.arizona.edu/news/do-women-talk-more-men-it-might-depend-their-age",
+    "note": "~125 words/min for ~2 hours of talking a day ~ 15,000. A landmark study put it near 16,000."
   },
   {
-    "id": "human-ribs",
+    "id": "steps-per-year",
     "date": "2026-06-29",
     "slot": 3,
-    "category": "Human Body",
-    "prompt": "How many ribs does a typical human have?",
-    "answer": 24,
-    "unit": "ribs",
-    "minExp": 0,
-    "maxExp": 2,
-    "source": "https://www.britannica.com/science/rib-anatomy",
-    "note": "24 — twelve pairs. The old myth that men have one fewer than women is false."
+    "category": "Health",
+    "prompt": "Roughly how many steps does an average person walk in a year?",
+    "answer": 1500000,
+    "unit": "steps",
+    "minExp": 4,
+    "maxExp": 9,
+    "source": "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+    "note": "~4,000 steps a day for most people x 365 ~ 1.5 million a year."
   },
   {
     "id": "minutes-in-day",
@@ -377,56 +377,56 @@
     "note": "60 x 24 = 1,440 minutes."
   },
   {
-    "id": "golf-holes",
+    "id": "tyre-rotations-100km",
     "date": "2026-06-29",
     "slot": 5,
-    "category": "Sport",
-    "prompt": "How many holes are played in a standard round of golf?",
-    "answer": 18,
-    "unit": "holes",
-    "minExp": 0,
-    "maxExp": 5,
-    "source": "https://www.randa.org/en/rog/the-rules-of-golf",
-    "note": "18 — the figure became standard at St Andrews in the 18th century."
+    "category": "Everyday",
+    "prompt": "How many times does a car tyre rotate over a 100 km drive?",
+    "answer": 48000,
+    "unit": "rotations",
+    "minExp": 2,
+    "maxExp": 7,
+    "source": "https://www.tyresafe.org",
+    "note": "A tyre is ~0.66 m across, so ~2.1 m around. 100,000 m / 2.1 ~ 48,000 turns."
   },
   {
-    "id": "constellations",
+    "id": "sleep-hours-year",
     "date": "2026-06-30",
     "slot": 1,
-    "category": "Space",
-    "prompt": "How many official constellations are recognised by astronomers?",
-    "answer": 88,
-    "unit": "constellations",
+    "category": "Health",
+    "prompt": "Roughly how many hours does a person sleep in a year?",
+    "answer": 2920,
+    "unit": "hours",
     "minExp": 1,
-    "maxExp": 5,
-    "source": "https://www.iau.org/public/themes/constellations/",
-    "note": "88 — the boundaries were fixed by the International Astronomical Union in 1922."
+    "maxExp": 6,
+    "source": "https://www.sleepfoundation.org",
+    "note": "~8 hours a night x 365 ~ 2,920 hours — about a third of the year."
   },
   {
-    "id": "baby-bones",
+    "id": "rice-grains-kg",
     "date": "2026-06-30",
     "slot": 2,
-    "category": "Human Body",
-    "prompt": "Roughly how many bones is a human baby born with?",
-    "answer": 270,
-    "unit": "bones",
+    "category": "Everyday",
+    "prompt": "Roughly how many grains of rice are in a 1 kg bag?",
+    "answer": 45000,
+    "unit": "grains",
     "minExp": 2,
-    "maxExp": 5,
-    "source": "https://www.britannica.com/science/human-skeleton",
-    "note": "About 270 — many fuse together as a child grows, leaving 206 in adults."
+    "maxExp": 7,
+    "source": "https://www.fao.org",
+    "note": "One grain weighs ~0.022 g. 1,000 g / 0.022 ~ 45,000 grains."
   },
   {
-    "id": "flag-stripes",
+    "id": "novel-words",
     "date": "2026-06-30",
     "slot": 3,
-    "category": "History",
-    "prompt": "How many stripes are on the United States flag?",
-    "answer": 13,
-    "unit": "stripes",
-    "minExp": 0,
-    "maxExp": 4,
-    "source": "https://www.archives.gov/founding-docs",
-    "note": "13 — one for each of the original colonies; the 50 stars represent the current states."
+    "category": "Books",
+    "prompt": "Roughly how many words are in a typical novel?",
+    "answer": 90000,
+    "unit": "words",
+    "minExp": 2,
+    "maxExp": 7,
+    "source": "https://en.wikipedia.org/wiki/Word_count",
+    "note": "~300 words a page x ~300 pages ~ 90,000 words."
   },
   {
     "id": "london-ny-km",
