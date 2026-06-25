@@ -8,8 +8,8 @@
   --line: #eee1d0;
   --accent: #a57548;        /* copper — slider, stake #, rank pill, streak chip, dot 1 */
   --accent-weak: #fce7d4;   /* peach — slider band fill + streak chip bg */
-  --good: #4e93a2;          /* teal — hit blocks, verdict text, dot 2 */
-  --good-weak: #ddf0f4;     /* pale blue — verdict box bg */
+  --good: #162640;          /* navy — hit blocks, verdict text, dot 2 */
+  --good-weak: #d0d9e8;     /* pale navy — verdict box bg */    
   --miss: #d9624a;          /* red — miss blocks, dot 3 */
   --gold: #efb23e;          /* hit star — matches the share card */
   --miss-weak: #fae7e1;
