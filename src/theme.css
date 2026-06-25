@@ -205,34 +205,6 @@ body {
   .democap.c3 { animation: none; opacity: 1; }
 }
 
-/* compress the start screen vertically on phones (laptop layout untouched) */
-@media (max-width: 500px) {
-  #start { padding-top: 1.5vh; }
-
-  .logo { font-size: 36px; margin-top: 8px; }
-  .tagline { font-size: 14.5px; margin-top: 8px; }
-  .fermi { font-size: 12.5px; margin-top: 6px; }
-
-  .demo { margin: 14px 0 4px; padding: 11px; }
-  .demoq { font-size: 14px; margin-bottom: 8px; }
-  .demoline { height: 50px; }
-  .demoaxis { top: 25px; }
-  .demotick { top: 20px; height: 10px; }
-  .demoticklab { top: 37px; }
-  .demoband { top: 18px; height: 16px; }
-  .demohandle { top: -6px; height: 26px; }
-  .democaps { margin-top: 8px; }
-
-  .rules { margin: 14px 0 14px; gap: 9px; }
-  .rule { font-size: 13px; }
-  .rule svg { width: 17px; height: 17px; }
-
-  .beststrip { margin-bottom: 12px; padding: 11px 14px; }
-  .beststrip .val { font-size: 16px; }
-
-  .btn { padding: 14px; font-size: 16px; }
-}
-
 @media (max-width: 500px) {
   @keyframes demoDotMobile {
     0%   { opacity: 0; top: -4px; background: var(--ink); }
