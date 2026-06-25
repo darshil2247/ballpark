@@ -5,7 +5,7 @@ const COLORS = {
   ink: "#3A2C20",
   paper: "#FFFFFF",
   accent: "#A57548",       // copper — header dot + rank badge
-  good: "#4E93A2",         // teal — caught ranges
+  good: "#4E93A2",         // teal — header dot (brand mark)
   miss: "#D9624A",         // red — misses
   gold: "#EFB23E",         // hit star fill
   goldEdge: "#C8922A",     // hit star outline (definition on pale squares)
@@ -82,7 +82,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fillStyle = "#fff";
   ctx.fillText(rtext, M + 26, M + 469);
 
-  // result squares (darker = tighter)
+  // result squares (darker navy = tighter)
   const sqY = M + 565;
   const n = d.results.length;
   const gap = 20;
@@ -94,7 +94,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
 
     if (r.hit) {
       const tight = Math.max(0, 1 - r.widthOOM / 3);
-      ctx.fillStyle = `rgba(78,147,162,${0.35 + 0.6 * tight})`;
+      ctx.fillStyle = `rgba(43,74,108,${0.3 + 0.7 * tight})`;   // navy, opacity grades tightness
       roundRect(ctx, x, sqY, sqW, sqW, 18);
       ctx.fill();
 
@@ -131,10 +131,10 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   // footer
   ctx.fillStyle = COLORS.ink;
   ctx.font = '600 36px "Space Grotesk", sans-serif';
-  ctx.fillText("How calibrated are you?", M, H - M - 10);
+  ctx.fillText("How calibrated are you?", M, H - M - 70);
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 24px "JetBrains Mono", monospace';
-  ctx.fillText("Drag the range. Tighter is riskier.", M, H - M + 26);
+  ctx.fillText("Drag the range. Tighter is riskier.", M, H - M - 32);
 }
 
 function drawStar(
