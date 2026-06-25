@@ -15,41 +15,55 @@
     <div class="app">
       <!-- START -->
       <section id="start" class="screen">
-        <div class="brandrow"><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
-        <h1 class="logo">Ballpark</h1>
-        <p class="tagline">Five numbers a day. Drag a range around each — tighter is riskier. How calibrated are you?</p>
-        <p class="fermi">A daily exercise in <b>Fermi estimation</b> — reasoning your way to a good-enough number when you can't look it up.</p>
-        <!-- how-it-works demo: plays the mechanic in ~6s, no interaction -->
-        <div class="demo" aria-hidden="true">
-          <div class="democat">Geography</div>
-          <div class="demoq">How tall is Mount Everest, in metres?</div>
-          <div class="demoline">
-            <div class="demoaxis"></div>
-            <div class="demotick" style="left:0%"></div>
-            <div class="demotick" style="left:25%"></div>
-            <div class="demotick" style="left:50%"></div>
-            <div class="demotick" style="left:75%"></div>
-            <div class="demotick" style="left:100%"></div>
-            <div class="demoticklab" style="left:0%">100</div>
-            <div class="demoticklab" style="left:25%">1k</div>
-            <div class="demoticklab" style="left:50%">10k</div>
-            <div class="demoticklab" style="left:75%">100k</div>
-            <div class="demoticklab" style="left:100%">1M</div>
-            <div class="demoband"><span class="demohandle l"></span><span class="demohandle r"></span></div>
-            <div class="demodot"></div>
-          </div>
-          <div class="democaps">
-            <span class="democap c1">Drag a low and a high onto the scale</span>
-            <span class="democap c2">Tighter range = more points, but riskier</span>
-            <span class="democap c3">Answer inside the range — you score!</span>
-          </div>
-        </div>
-        <div class="how" id="how"></div>
-        <div class="beststrip" id="bestStrip" hidden>
-          <span class="lab">Best score</span><span class="val mono" id="bestVal">0</span>
-        </div>
-        <button class="btn" id="startBtn">Play today's five</button>
-      </section>
+  <div class="brandrow"><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
+  <h1 class="logo">Ballpark</h1>
+  <p class="tagline">Guess the range. Five a day.</p>
+
+  <div class="demo" aria-hidden="true">
+    <div class="democat">Geography</div>
+    <div class="demoq">How tall is Everest, in metres?</div>
+    <div class="demoline">
+      <div class="demoaxis"></div>
+      <div class="demotick" style="left:0%"></div>
+      <div class="demotick" style="left:25%"></div>
+      <div class="demotick" style="left:50%"></div>
+      <div class="demotick" style="left:75%"></div>
+      <div class="demotick" style="left:100%"></div>
+      <div class="demoticklab" style="left:0%">100</div>
+      <div class="demoticklab" style="left:25%">1k</div>
+      <div class="demoticklab" style="left:50%">10k</div>
+      <div class="demoticklab" style="left:75%">100k</div>
+      <div class="demoticklab" style="left:100%">1M</div>
+      <div class="demoband"><span class="demohandle l"></span><span class="demohandle r"></span></div>
+      <div class="demodot"></div>
+    </div>
+    <div class="democaps">
+      <div class="democap c1">Drag a range onto the line</div>
+      <div class="democap c2">Tighter band = more points</div>
+      <div class="democap c3">
+        <svg viewBox="0 0 24 24" fill="var(--gold)" stroke="none" aria-hidden="true" style="width:15px;height:15px;margin-right:6px;flex:0 0 auto;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        Caught — inside the range
+      </div>
+    </div>
+  </div>
+
+  <div class="rules">
+    <div class="rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
+      <span>Five numbers a day, <b>one shot each</b>.</span>
+    </div>
+    <div class="rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4 4 4"/><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg>
+      <span>Score if the answer lands <b>inside</b> your range.</span>
+    </div>
+  </div>
+
+  <div class="beststrip" id="bestStrip" hidden>
+    <span class="lab">Best score</span><span class="val mono" id="bestVal">0</span>
+  </div>
+
+  <button class="btn" id="startBtn">Play today's five</button>
+</section>
 
       <!-- PLAY -->
       <section id="play" class="screen" hidden>

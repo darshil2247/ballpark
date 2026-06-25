@@ -20,12 +20,6 @@ function niceRound(v: number): number {
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
-const HOW = [
-  ["1", "<b>Drag a range</b> onto the scale — a low and a high. No typing."],
-  ["2", "<b>Score if the answer's inside.</b> Tighter ranges score more; a 10× range that's right beats a tight one that's wrong."],
-  ["3", "<b>Learn the trick.</b> Each reveal shows how you could've reasoned it out."],
-];
-
 interface State {
   puzzle: Puzzle;
   idx: number;
@@ -39,9 +33,6 @@ let S: State | null = null;
 
 export function init(): void {
   const puzzle = getTodaysPuzzle();
-  $("how").innerHTML = HOW.map(
-    ([n, t]) => `<div class="step"><span class="num">${n}</span><span class="txt">${t}</span></div>`,
-  ).join("");
 
   const saved = loadSaved();
   if (saved.bestScore > 0) {
@@ -109,7 +100,7 @@ function renderQuestion(): void {
     $("tightWord").textContent = tightnessLabel(w);
     const stake = Math.round(MAX_PER_QUESTION * Math.max(0, 1 - w / 3));
     $("stakePts").textContent = String(stake);
-    $("stakePts").style.color = stake > 70 ? "var(--accent)" : stake > 45 ? "var(--soft)" : "var(--faint)";
+    $("stakePts").style.color = "var(--accent)";
   });
 }
 

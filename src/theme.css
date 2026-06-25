@@ -1,17 +1,20 @@
 /* ===== design tokens — edit these to restyle the whole app ===== */
 :root {
-  --paper: #FFFFFF;
-  --bg: #FBF6EA;
-  --ink: #2C2820;
-  --soft: rgba(44,40,32,.62);
-  --faint: rgba(44,40,32,.40);
-  --line: #EBE2D2;
-  --accent: #DDA02A;
-  --accent-weak: #F8EECF;
-  --good: #4E9A6A;
-  --good-weak: #E6F1E7;
-  --miss: #DD6149;
-  --miss-weak: #FAE6E0;
+  --paper: #ffffff;
+  --bg: #fbf4ec;
+  --ink: #3a2c20;
+  --soft: rgba(58, 44, 32, 0.62);
+  --faint: rgba(58, 44, 32, 0.40);
+  --line: #eee1d0;
+  --accent: #a57548;        /* copper — slider, stake #, rank pill, streak chip, dot 1 */
+  --accent-weak: #fce7d4;   /* peach — slider band fill + streak chip bg */
+  --good: #4e93a2;          /* teal — hit blocks, verdict text, dot 2 */
+  --good-weak: #ddf0f4;     /* pale blue — verdict box bg */
+  --miss: #d9624a;          /* red — miss blocks, dot 3 */
+  --gold: #efb23e;          /* hit star — matches the share card */
+  --miss-weak: #fae7e1;
+  --r: 16px;
+  --r-sm: 12px;
   --sans: "Inter", system-ui, sans-serif;
   --display: "Space Grotesk", var(--sans);
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -70,6 +73,11 @@ body {
 .beststrip { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border: 1px solid var(--line); border-radius: var(--r-sm); margin-bottom: 16px; }
 .beststrip .lab { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
 .beststrip .val { font-weight: 700; font-size: 18px; }
+.rules { display: flex; flex-direction: column; gap: 11px; margin: 18px 0 22px; }
+.rule { display: flex; gap: 11px; align-items: flex-start; font-size: 14px; color: var(--soft); line-height: 1.45; }
+.rule b { color: var(--ink); font-weight: 600; }
+.rule svg { flex: 0 0 auto; width: 19px; height: 19px; color: var(--accent); margin-top: 1px; }
+.democap.c3 { display: flex; align-items: center; }
 
 /* ---------- PLAY ---------- */
 .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
@@ -86,20 +94,20 @@ body {
 /* number line (classes also referenced by interval.ts) */
 .nline { position: relative; height: 92px; margin: 14px 0 6px; touch-action: none; user-select: none; -webkit-user-select: none; }
 .nline .axis { position: absolute; left: 0; right: 0; top: 44px; height: 3px; border-radius: 2px; background: var(--line); }
-.nline .tick { position: absolute; top: 38px; width: 1px; height: 14px; background: #d6d9e2; transform: translateX(-0.5px); }
+.nline .tick { position: absolute; top: 38px; width: 1px; height: 14px; background: #d8cbb8; transform: translateX(-0.5px); }
 .nline .ticklab { position: absolute; top: 60px; font-family: var(--mono); font-size: 9.5px; color: var(--faint); transform: translateX(-50%); white-space: nowrap; }
 .nline .band { position: absolute; top: 33px; height: 25px; border-radius: 7px; background: var(--accent-weak); border: 1.5px solid var(--accent); cursor: grab; transition: background 0.3s, border-color 0.3s; }
 .nline .band:active { cursor: grabbing; }
 .nline .band.hit { background: var(--good-weak); border-color: var(--good); }
-.nline .band.miss { background: var(--paper); border-color: #cfd3dd; }
+.nline .band.miss { background: var(--paper); border-color: #d8cbb8; }
 .nline .handle {
   position: absolute; top: 24px; width: 26px; height: 42px; margin-left: -13px; border-radius: 8px;
-  background: #fff; border: 2px solid var(--accent); box-shadow: 0 2px 8px rgba(47, 107, 255, 0.22);
+  background: #fff; border: 2px solid var(--accent); box-shadow: 0 2px 8px rgba(165, 117, 72, 0.25);
   cursor: ew-resize; z-index: 3; display: flex; align-items: center; justify-content: center; touch-action: none;
 }
 .nline .handle::before { content: ""; width: 2px; height: 16px; border-radius: 2px; background: var(--accent); box-shadow: 4px 0 0 var(--accent), -4px 0 0 var(--accent); }
-.nline .handle.frozen { border-color: #c9cdd6; box-shadow: none; cursor: default; }
-.nline .handle.frozen::before { background: #c9cdd6; box-shadow: 4px 0 0 #c9cdd6, -4px 0 0 #c9cdd6; }
+.nline .handle.frozen { border-color: #cbbba6; box-shadow: none; cursor: default; }
+.nline .handle.frozen::before { background: #cbbba6; box-shadow: 4px 0 0 #cbbba6, -4px 0 0 #cbbba6; }
 .nline .answer-dot {
   position: absolute; top: 38px; width: 16px; height: 16px; border-radius: 50%; background: var(--ink);
   border: 3px solid #fff; box-shadow: 0 0 0 1px var(--ink); transform: translate(-50%, 0) scale(0); z-index: 2;
@@ -138,7 +146,7 @@ body {
 .demoq { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }
 .demoline { position: relative; height: 56px; }
 .demoaxis { position: absolute; left: 0; right: 0; top: 28px; height: 3px; border-radius: 2px; background: var(--line); }
-.demotick { position: absolute; top: 23px; width: 1px; height: 11px; background: #d6d9e2; transform: translateX(-0.5px); }
+.demotick { position: absolute; top: 23px; width: 1px; height: 11px; background: #d8cbb8; transform: translateX(-0.5px); }
 .demoticklab { position: absolute; top: 41px; font-family: var(--mono); font-size: 9px; color: var(--faint); transform: translateX(-50%); white-space: nowrap; }
 .demoband { position: absolute; top: 20px; height: 18px; border-radius: 6px; border: 1.5px solid currentColor; color: var(--accent); background: var(--accent-weak); animation: demoBand 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 .demohandle { position: absolute; top: -6px; width: 18px; height: 28px; border-radius: 6px; background: var(--paper); border: 2px solid currentColor; }
@@ -180,7 +188,7 @@ body {
 .final { font-weight: 700; font-size: 60px; letter-spacing: -0.03em; line-height: 1; }
 .rankbadge { font-family: var(--mono); font-weight: 700; font-size: 14px; color: #fff; background: var(--accent); padding: 8px 14px; border-radius: 999px; }
 .resmsg { color: var(--soft); font-size: 15px; margin: 12px auto 22px; max-width: 34ch; }
-.cardcanvas { width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 20px 50px -24px rgba(20, 33, 61, 0.45); margin: 0 auto 20px; display: block; }
+.cardcanvas { width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 20px 50px -24px rgba(58, 44, 32, 0.45); margin: 0 auto 20px; display: block; }
 .sharebtns { display: flex; gap: 10px; }
 .toast { height: 18px; font-size: 13px; color: var(--good); font-weight: 600; margin-top: 10px; }
 .btn.wide { margin-top: 8px; }
@@ -213,9 +221,9 @@ body {
   .demohandle { top: -6px; height: 26px; }
   .democaps { margin-top: 8px; }
 
-  .how { margin: 16px 0 14px; gap: 9px; }
-  .how .txt { font-size: 13.5px; }
-  .how .num { width: 22px; height: 22px; }
+  .rules { margin: 14px 0 14px; gap: 9px; }
+  .rule { font-size: 13px; }
+  .rule svg { width: 17px; height: 17px; }
 
   .beststrip { margin-bottom: 12px; padding: 11px 14px; }
   .beststrip .val { font-size: 16px; }

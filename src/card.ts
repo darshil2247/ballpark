@@ -2,13 +2,15 @@ import type { Result } from "./types";
 import { pctOfTotal, rankFor } from "./scoring";
 
 const COLORS = {
-  ink: "#14213D",
+  ink: "#3A2C20",
   paper: "#FFFFFF",
-  accent: "#2F6BFF",
-  good: "#1E9E62",
-  miss: "#E5544B",
-  faint: "rgba(20,33,61,.45)",
-  line: "rgba(20,33,61,.16)",
+  accent: "#A57548",       // copper — header dot + rank badge
+  good: "#4E93A2",         // teal — caught ranges
+  miss: "#D9624A",         // red — misses
+  gold: "#EFB23E",         // hit star fill
+  goldEdge: "#C8922A",     // hit star outline (definition on pale squares)
+  faint: "rgba(58,44,32,.45)",
+  line: "rgba(58,44,32,.16)",
 };
 
 export interface CardData {
@@ -87,19 +89,34 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   const sqW = (W - 2 * M - gap * (n - 1)) / n;
   d.results.forEach((r, i) => {
     const x = M + i * (sqW + gap);
+    const cx = x + sqW / 2;
+    const cy = sqY + sqW / 2;
+
     if (r.hit) {
       const tight = Math.max(0, 1 - r.widthOOM / 3);
-      ctx.fillStyle = `rgba(30,158,98,${0.35 + 0.6 * tight})`;
+      ctx.fillStyle = `rgba(78,147,162,${0.35 + 0.6 * tight})`;
+      roundRect(ctx, x, sqY, sqW, sqW, 18);
+      ctx.fill();
+
+      // gold star
+      drawStar(ctx, cx, cy, sqW * 0.26, sqW * 0.115);
+      ctx.fillStyle = COLORS.gold;
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = COLORS.goldEdge;
+      ctx.stroke();
     } else {
       ctx.fillStyle = COLORS.miss;
+      roundRect(ctx, x, sqY, sqW, sqW, 18);
+      ctx.fill();
+
+      // miss cross
+      ctx.fillStyle = "#fff";
+      ctx.font = '700 52px "Space Grotesk", sans-serif';
+      ctx.textAlign = "center";
+      ctx.fillText("✕", cx, cy + 18);
+      ctx.textAlign = "left";
     }
-    roundRect(ctx, x, sqY, sqW, sqW, 18);
-    ctx.fill();
-    ctx.fillStyle = "#fff";
-    ctx.font = '700 52px "Space Grotesk", sans-serif';
-    ctx.textAlign = "center";
-    ctx.fillText(r.hit ? "✓" : "✕", x + sqW / 2, sqY + sqW / 2 + 18);
-    ctx.textAlign = "left";
   });
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 24px "JetBrains Mono", monospace';
@@ -118,6 +135,26 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 24px "JetBrains Mono", monospace';
   ctx.fillText("Drag the range. Tighter is riskier.", M, H - M + 26);
+}
+
+function drawStar(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  outerR: number,
+  innerR: number,
+  points = 5
+) {
+  ctx.beginPath();
+  for (let i = 0; i < points * 2; i++) {
+    const r = i % 2 === 0 ? outerR : innerR;
+    const a = -Math.PI / 2 + (i * Math.PI) / points;
+    const px = cx + Math.cos(a) * r;
+    const py = cy + Math.sin(a) * r;
+    if (i === 0) ctx.moveTo(px, py);
+    else ctx.lineTo(px, py);
+  }
+  ctx.closePath();
 }
 
 function statBox(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, lab: string, val: string) {
