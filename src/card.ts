@@ -1,6 +1,6 @@
 import type { Result } from "./types";
 import { pctOfTotal, rankFor } from "./scoring";
-
+ 
 const COLORS = {
   ink: "#3A2C20",
   paper: "#FFFFFF",
@@ -12,14 +12,14 @@ const COLORS = {
   faint: "rgba(58,44,32,.45)",
   line: "rgba(58,44,32,.16)",
 };
-
+ 
 export interface CardData {
   results: Result[];
   total: number;
   streak: number;
   date: string;
 }
-
+ 
 export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<void> {
   try {
     await (document as any).fonts?.ready;
@@ -32,16 +32,16 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   const M = 88;
   const hits = d.results.filter((r) => r.hit).length;
   const rank = rankFor(pctOfTotal(d.total));
-
+ 
   ctx.fillStyle = COLORS.ink;
   ctx.fillRect(0, 0, W, H);
   ctx.fillStyle = COLORS.paper;
   roundRect(ctx, M - 28, M - 28, W - 2 * (M - 28), H - 2 * (M - 28), 44);
   ctx.fill();
-
+ 
   ctx.textBaseline = "alphabetic";
   ctx.textAlign = "left";
-
+ 
   // header
   let dx = M;
   [COLORS.accent, COLORS.good, COLORS.miss].forEach((c) => {
@@ -59,7 +59,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.textAlign = "right";
   ctx.fillText(d.date, W - M, M + 36);
   ctx.textAlign = "left";
-
+ 
   // score
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 28px "JetBrains Mono", monospace';
@@ -71,7 +71,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fillStyle = COLORS.faint;
   ctx.font = '600 64px "Space Grotesk", sans-serif';
   ctx.fillText("/ 500", M + scoreW + 16, M + 380);
-
+ 
   // rank badge
   ctx.font = '700 32px "JetBrains Mono", monospace';
   const rtext = rank.name.toUpperCase();
@@ -81,7 +81,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fill();
   ctx.fillStyle = "#fff";
   ctx.fillText(rtext, M + 26, M + 469);
-
+ 
   // result squares (darker navy = tighter)
   const sqY = M + 565;
   const n = d.results.length;
@@ -91,13 +91,13 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
     const x = M + i * (sqW + gap);
     const cx = x + sqW / 2;
     const cy = sqY + sqW / 2;
-
+ 
     if (r.hit) {
       const tight = Math.max(0, 1 - r.widthOOM / 3);
       ctx.fillStyle = `rgba(43,74,108,${0.3 + 0.7 * tight})`;   // navy, opacity grades tightness
       roundRect(ctx, x, sqY, sqW, sqW, 18);
       ctx.fill();
-
+ 
       // gold star
       drawStar(ctx, cx, cy, sqW * 0.26, sqW * 0.115);
       ctx.fillStyle = COLORS.gold;
@@ -109,7 +109,7 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
       ctx.fillStyle = COLORS.miss;
       roundRect(ctx, x, sqY, sqW, sqW, 18);
       ctx.fill();
-
+ 
       // miss cross
       ctx.fillStyle = "#fff";
       ctx.font = '700 52px "Space Grotesk", sans-serif';
@@ -121,13 +121,13 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 24px "JetBrains Mono", monospace';
   ctx.fillText("YOUR FIVE RANGES", M, sqY + sqW + 48);
-
+ 
   // stats
   const statY = sqY + sqW + 108;
   const colW = (W - 2 * M - 28) / 2;
   statBox(ctx, M, statY, colW, "HIT RATE", `${hits}/5`);
   statBox(ctx, M + colW + 28, statY, colW, "STREAK", `${d.streak}🔥`.replace("🔥", "d"));
-
+ 
   // footer
   ctx.fillStyle = COLORS.ink;
   ctx.font = '600 36px "Space Grotesk", sans-serif';
@@ -135,8 +135,15 @@ export async function drawCard(canvas: HTMLCanvasElement, d: CardData): Promise<
   ctx.fillStyle = COLORS.faint;
   ctx.font = '500 24px "JetBrains Mono", monospace';
   ctx.fillText("Drag the range. Tighter is riskier.", M, H - M - 32);
+ 
+  // domain (bottom-right, subtle link cue — mirrors the date top-right)
+  ctx.textAlign = "right";
+  ctx.fillStyle = COLORS.accent;
+  ctx.font = '600 28px "JetBrains Mono", monospace';
+  ctx.fillText("ballparktoday.com", W - M, H - M + 8);
+  ctx.textAlign = "left";
 }
-
+ 
 function drawStar(
   ctx: CanvasRenderingContext2D,
   cx: number,
@@ -156,7 +163,7 @@ function drawStar(
   }
   ctx.closePath();
 }
-
+ 
 function statBox(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, lab: string, val: string) {
   ctx.strokeStyle = COLORS.line;
   ctx.lineWidth = 2;
@@ -169,7 +176,7 @@ function statBox(ctx: CanvasRenderingContext2D, x: number, y: number, w: number,
   ctx.font = '700 58px "Space Grotesk", sans-serif';
   ctx.fillText(val, x + 26, y + 108);
 }
-
+ 
 function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -179,11 +186,11 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
   ctx.arcTo(x, y, x + w, y, r);
   ctx.closePath();
 }
-
+ 
 export function cardBlob(canvas: HTMLCanvasElement): Promise<Blob | null> {
   return new Promise((res) => canvas.toBlob(res, "image/png"));
 }
-
+ 
 export async function copyCard(canvas: HTMLCanvasElement): Promise<boolean> {
   try {
     const blob = await cardBlob(canvas);
@@ -194,7 +201,7 @@ export async function copyCard(canvas: HTMLCanvasElement): Promise<boolean> {
     return false;
   }
 }
-
+ 
 export async function downloadCard(canvas: HTMLCanvasElement, total: number): Promise<void> {
   const blob = await cardBlob(canvas);
   if (!blob) return;
