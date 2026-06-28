@@ -119,6 +119,40 @@ body {
 
 .readrow { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
 .range { font-weight: 600; font-size: 15px; }
+
+/* editable range readout — the two numbers double as inline inputs */
+.range .rangenum {
+  font: inherit;
+  color: inherit;
+  box-sizing: content-box;          /* so the JS ch-width sizing stays exact */
+  border: 0;
+  background: transparent;
+  padding: 0 2px;
+  margin: 0;
+  border-radius: 4px;
+  text-align: center;
+  cursor: text;
+  min-width: 1ch;
+  transition: background 0.12s ease;
+}
+.range .rangenum:hover {
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.range .rangenum:focus {
+  outline: none;
+  background: var(--accent-weak);
+  box-shadow: inset 0 -1.5px 0 var(--accent);
+}
+.range .rangenum:disabled {          /* after lock — keep it looking like plain text */
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  opacity: 1;
+  cursor: default;
+  box-shadow: none;
+}
+.range .dash { margin: 0 3px; color: var(--soft); }
+.range .unit { margin-left: 6px; }
+
 .tight { font-size: 12.5px; color: var(--soft); font-weight: 500; }
 
 .stake { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--bg); }

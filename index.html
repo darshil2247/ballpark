@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
- 
+
     <!-- Primary -->
     <title>Ballpark — how calibrated are you?</title>
     <meta name="description" content="A daily estimation game. Drag a range around five numbers — tighter is riskier. How calibrated are you?" />
     <link rel="canonical" href="https://ballparktoday.com/" />
     <meta name="theme-color" content="#f5f6f8" />
- 
+
     <!-- Open Graph (link previews in Discord, Slack, iMessage, Facebook, etc.) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ballpark" />
@@ -19,18 +19,18 @@
     <meta property="og:image" content="https://ballparktoday.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
- 
+
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ballpark — how calibrated are you?" />
     <meta name="twitter:description" content="A daily estimation game. Drag a range around five numbers — tighter is riskier. How calibrated are you?" />
     <meta name="twitter:image" content="https://ballparktoday.com/og-image.png" />
- 
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
- 
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,7 +46,7 @@
   <h1 class="logo">Ballpark</h1>
   <p class="tagline">Guess the range. Five a day.</p>
   <p class="fermi">A daily exercise in <b>Fermi estimation</b> — reasoning your way to the right ballpark.</p>
- 
+
   <div class="demo" aria-hidden="true">
     <div class="democat">Geography</div>
     <div class="demoq">How tall is Everest, in metres?</div>
@@ -74,7 +74,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="rules">
     <div class="rule">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
@@ -85,14 +85,14 @@
       <span>Score if the answer lands <b>inside</b> your range.</span>
     </div>
   </div>
- 
+
   <div class="beststrip" id="bestStrip" hidden>
     <span class="lab">Best score</span><span class="val mono" id="bestVal">0</span>
   </div>
- 
+
   <button class="btn" id="startBtn">Play today's five</button>
 </section>
- 
+
       <!-- PLAY -->
       <section id="play" class="screen" hidden>
         <div class="topbar">
@@ -103,24 +103,24 @@
           </div>
         </div>
         <div class="progress"><div class="fill" id="progFill"></div></div>
- 
+
         <div class="qcat mono" id="qcat"></div>
         <h2 class="prompt" id="qprompt"></h2>
- 
+
         <div class="nline" id="nline"></div>
- 
+
         <div class="readrow">
-          <span class="range mono" id="rangeRead"></span>
+          <span class="range mono" id="rangeRead"><input type="text" class="rangenum" id="loIn" inputmode="numeric" enterkeyhint="done" autocomplete="off" aria-label="Low end of your range" /><span class="dash">–</span><input type="text" class="rangenum" id="hiIn" inputmode="numeric" enterkeyhint="done" autocomplete="off" aria-label="High end of your range" /><span class="unit" id="unitLabel"></span></span>
           <span class="tight" id="tightWord"></span>
         </div>
- 
+
         <div class="stake" id="stake">
           <div class="l">If the answer is inside your range<b>tighter = more, but riskier</b></div>
           <div class="pts mono" id="stakePts">0</div>
         </div>
- 
+
         <button class="btn" id="lockBtn">Lock it in</button>
- 
+
         <div class="reveal" id="reveal" hidden>
           <div class="verdict" id="verdict">
             <div>
@@ -134,7 +134,7 @@
           <button class="btn" id="nextBtn">Next</button>
         </div>
       </section>
- 
+
       <!-- RESULTS -->
       <section id="results" class="screen" hidden>
         <div class="eyebrow mono" id="resEyebrow">Round complete</div>
@@ -155,4 +155,3 @@
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
- 

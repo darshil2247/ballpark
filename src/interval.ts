@@ -6,6 +6,8 @@
 
 export interface IntervalInput {
   getInterval(): { loVal: number; hiVal: number };
+  setLow(loVal: number): void;
+  setHigh(hiVal: number): void;
   onChange(cb: () => void): void;
   freeze(hit: boolean): void;
   showAnswer(value: number): void;
@@ -20,11 +22,8 @@ interface Opts {
 export function mountInterval(container: HTMLElement, opts: Opts): IntervalInput {
   const { minExp, maxExp } = opts;
   const span = maxExp - minExp;
-  // Band starts at a random position each question (same 28%-wide default as
-  // before), so an untouched band no longer reliably sits on the answer.
-  const START_WIDTH = 28;
-  let loPct = 5 + Math.random() * (90 - START_WIDTH);
-  let hiPct = loPct + START_WIDTH;
+  let loPct = 36;
+  let hiPct = 64;
   let frozen = false;
   let changeCb: (() => void) | null = null;
 
@@ -106,6 +105,18 @@ export function mountInterval(container: HTMLElement, opts: Opts): IntervalInput
 
   return {
     getInterval: () => ({ loVal: valAt(loPct), hiVal: valAt(hiPct) }),
+    // Typed-input setters — mirror the drag clamping: low can't pass high,
+    // high can't pass low. Both re-render, firing onChange just like a drag.
+    setLow(loVal) {
+      if (frozen) return;
+      loPct = Math.min(clamp(pctOf(loVal), 0, 100), hiPct);
+      render();
+    },
+    setHigh(hiVal) {
+      if (frozen) return;
+      hiPct = Math.max(clamp(pctOf(hiVal), 0, 100), loPct);
+      render();
+    },
     onChange(cb) {
       changeCb = cb;
       cb();
