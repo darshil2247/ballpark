@@ -120,38 +120,41 @@ body {
 .readrow { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
 .range { font-weight: 600; font-size: 15px; }
 
-/* editable range readout — the two numbers double as inline inputs */
+/* editable range readout — the two numbers double as inline inputs.
+   They carry the "fillable" look by default as a nudge that they can be
+   edited, and deepen slightly when focused. */
 .range .rangenum {
   font: inherit;
   color: inherit;
   box-sizing: content-box;          /* so the JS ch-width sizing stays exact */
   border: 0;
-  background: transparent;
-  padding: 0 2px;
+  background: var(--accent-weak);
+  box-shadow: inset 0 -1.5px 0 var(--accent);
+  padding: 1px 6px;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   text-align: center;
   cursor: text;
   min-width: 1ch;
-  transition: background 0.12s ease;
+  transition: background 0.12s ease, box-shadow 0.12s ease;
 }
 .range .rangenum:hover {
-  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: inset 0 -2px 0 var(--accent);
 }
 .range .rangenum:focus {
   outline: none;
-  background: var(--accent-weak);
-  box-shadow: inset 0 -1.5px 0 var(--accent);
+  box-shadow: inset 0 -1.5px 0 var(--accent), 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
 }
-.range .rangenum:disabled {          /* after lock — keep it looking like plain text */
+.range .rangenum:disabled {          /* after lock — drop the nudge, back to plain text */
+  background: transparent;
+  box-shadow: none;
   color: inherit;
   -webkit-text-fill-color: currentColor;
   opacity: 1;
   cursor: default;
-  box-shadow: none;
 }
-.range .dash { margin: 0 3px; color: var(--soft); }
-.range .unit { margin-left: 6px; }
+.range .dash { margin: 0 4px; color: var(--soft); }
+.range .unit { margin-left: 8px; }
 
 .tight { font-size: 12.5px; color: var(--soft); font-weight: 500; }
 
